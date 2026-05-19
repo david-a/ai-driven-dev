@@ -85,13 +85,13 @@ Key point for agenda item 3 — **after** opportunities/challenges, **before** S
 
 Example tools — not an endorsement of a specific vendor, but to show you can build separate verification layers:
 
-| Layer | Example tool / mechanism | What it provides |
-|-------|--------------------------|------------------|
-| **Foundation — rules/skills** | `rules` / `skills` in Cursor (or similar IDE) | Enforcement **inside every session**, before all other layers |
-| Pre-PR (IDE) | **Cursor** — Find Issues / Review before push | Local scan before code leaves the machine |
-| On the PR (GitHub) | **Bugbot**, **GitHub Copilot** code review | Automated review on the diff, in PR context |
-| External/additional review | **CodeRabbit**, **Greptile**, **Sourcery**, and others | A review agent separate from the author — "not the same fox" |
-| Classic gate | CI, lint, tests | Objective verification that does not depend on AI |
+| Layer                         | Example tool / mechanism                               | What it provides                                              |
+| ----------------------------- | ------------------------------------------------------ | ------------------------------------------------------------- |
+| **Foundation — rules/skills** | `rules` / `skills` in Cursor (or similar IDE)          | Enforcement **inside every session**, before all other layers |
+| Pre-PR (IDE)                  | **Cursor** — Find Issues / Review before push          | Local scan before code leaves the machine                     |
+| On the PR (GitHub)            | **Bugbot**, **GitHub Copilot** code review             | Automated review on the diff, in PR context                   |
+| External/additional review    | **CodeRabbit**, **Greptile**, **Sourcery**, and others | A review agent separate from the author — "not the same fox"  |
+| Classic gate                  | CI, lint, tests                                        | Objective verification that does not depend on AI             |
 
 ### Foundation Layer: Rules And Skills (Earliest)
 
@@ -101,11 +101,13 @@ This layer runs **in every agent session**, before push or PR — and prevents u
 2. **Build + lint + tests after every change** — a rule/skill that requires the agent to run all three at the end of each step, and fix failures before continuing.
 
 Why it matters:
+
 - Catches regressions **immediately**, not after push or review.
 - Shortens loops — less "it doesn't work" / "try again" / "you forgot a test."
 - This is soft separation: the agent **writes**, then runs an **objective gate** (build/lint/test) that does not depend on "looks good to me."
 
 Example rule wording:
+
 - "When adding or changing behavior, add or update unit tests in the same change."
 - "After every code change, run build, lint, and tests; fix failures before proceeding."
 

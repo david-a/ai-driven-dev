@@ -1064,19 +1064,43 @@
                 left: {
                   title: "❌ הבעיה",
                   items: [
-                    "דרישות בצ'אט",
-                    "פרשנויות שונות",
-                    "זחילת היקף (scope creep)",
-                    "review על סגנון",
+                    {
+                      text: "דרישות בצ'אט",
+                      tip: "דרישות מפוזרות בצ'אט, Slack או טיקטים — אין מקור אמת יחיד; קל לאבד פרטים ולא לזהות כשההיקף השתנה.",
+                    },
+                    {
+                      text: "פרשנויות שונות",
+                      tip: "בלי Spec מפורש, כל מהנדס (ובין סוכני AI) מפרשים את הבקשה אחרת — והפתרונות לא יתיישרו.",
+                    },
+                    {
+                      text: "זחילת היקף (scope creep)",
+                      tip: "כשהכוונה לא מוגדרת מראש, \"רק עוד פיצ'ר קטן\" מצטרף באמצע — ומייצר ריוורק יקר.",
+                    },
+                    {
+                      text: "review על סגנון",
+                      tip: "בלי קריטריוני קבלה, ה-review מתעכב על naming ו-formatting במקום לבדוק \"האם בנינו את הנכון?\"",
+                    },
                   ],
                 },
                 right: {
                   title: "✓ הפתרון",
                   items: [
-                    "כוונה מפורשת",
-                    "קריטריוני קבלה",
-                    "פחות ריוורק",
-                    'ארטיפקט "למה←מה"',
+                    {
+                      text: "כוונה מפורשת",
+                      tip: "Spec כותב מה רוצים להשיג ולמה — לפני שורת קוד. זה בסיס לאימות עצמאי.",
+                    },
+                    {
+                      text: "קריטריוני קבלה",
+                      tip: "רשימה ברורה של \"איך נדע שזה עובד\" — מאפשרת בדיקות, review ממוקד, ומונעת ויכוחים בסוף.",
+                    },
+                    {
+                      text: "פחות ריוורק",
+                      tip: "עמימות שמתגלה בשלב ה-Spec עולה דקות לתקן; אותה עמימות במימוש עולה ימים.",
+                    },
+                    {
+                      text: 'ארטיפקט "למה←מה"',
+                      tip: "גם כשיש PRD/Spec מהפרודקט, SDD מחבר את ה-\"למה→מה\" למימוש ליד הקוד (משימות, בדיקות, PRים) — כך ה-context נשאר traceable וחי עם הקוד, וה-AI נשאר ממוקד בהיקף שסוכם.",
+                    },
                   ],
                 },
               },
@@ -1085,10 +1109,22 @@
               label: "Spec-Driven · AI",
               title: "איפה AI נכנס",
               bullets: [
-                "טיוטות הצעות וחקר מקרי קצה",
-                "מיפוי Specs למשימות מימוש",
-                "שלדים ובדיקות מ-Specs מאושרים",
-                "עדכון דוקומנטציה מה-Spec",
+                {
+                  text: "טיוטות הצעות וחקר מקרי קצה",
+                  tip: "AI מציע וריאנטים של פתרון ומזהה edge cases לפני הקוד — אדם בוחר ומאשר.",
+                },
+                {
+                  text: "מיפוי Specs למשימות מימוש",
+                  tip: "מפרק Spec מאושר לשלבים קטנים שניתן לבצע ולעקוב — מפחית \"לאן התחלנו?\"",
+                },
+                {
+                  text: "שלדים ובדיקות מ-Specs מאושרים",
+                  tip: "רק אחרי שה-Spec מיושר — AI יוצר boilerplate ובדיקות שמכסות את קריטריוני הקבלה.",
+                },
+                {
+                  text: "עדכון דוקומנטציה מה-Spec",
+                  tip: "כשה-Spec משתנה או נסגר, AI מעדכן docs ו-release notes — שומר traceability.",
+                },
               ],
             },
             {
@@ -1096,12 +1132,30 @@
               title: "OpenSpec — מסגרת ביצוע",
               key: "לא רק תיעוד — <strong>לופ חוזר</strong>: הצעה ← יישור ← מימוש ← אימות",
               flow: [
-                "בקשה",
-                "Proposal",
-                "Spec",
-                "מימוש",
-                "בדיקות",
-                "Traceability",
+                {
+                  text: "בקשה",
+                  tip: "נקודת ההתחלה בשפה חופשית — מה המשתמש או העסק באמת רוצים.",
+                },
+                {
+                  text: "Proposal",
+                  tip: "הצעת שינוי בפורמט OpenSpec — מתארת מה, למה, והסכנות לפני שמתחייבים למימוש.",
+                },
+                {
+                  text: "Spec",
+                  tip: "דרישות וקריטריוני קבלה מפורשים — מקור האמת לכל מי שמממש, בודק, או מאשר.",
+                },
+                {
+                  text: "מימוש",
+                  tip: "מימוש vertical slice מול ה-Spec — AI מסייע, אבל ההחלטות על היקף נשארות אנושיות.",
+                },
+                {
+                  text: "בדיקות",
+                  tip: "אימות מול קריטריוני הקבלה, לא מול \"נראה לי שזה בסדר\" — CI ובדיקות כשער.",
+                },
+                {
+                  text: "Traceability",
+                  tip: "שרשרת ברורה: בקשה → Spec → קוד → אימות — אפשר לעקוב ולראות מה עמד בתנאים.",
+                },
               ],
             },
             {
@@ -1371,19 +1425,43 @@
                 left: {
                   title: "❌ The problem",
                   items: [
-                    "Requirements in chat",
-                    "Different interpretations",
-                    "Scope creep",
-                    "Style-focused review",
+                    {
+                      text: "Requirements in chat",
+                      tip: "Requirements scattered across chat, Slack, or tickets — no single source of truth; details get lost and scope drift goes unnoticed.",
+                    },
+                    {
+                      text: "Different interpretations",
+                      tip: "Without an explicit spec, each engineer (and AI agent) interprets the request differently — solutions won't align.",
+                    },
+                    {
+                      text: "Scope creep",
+                      tip: "When intent isn't defined upfront, 'just one more small feature' slips in mid-implementation — causing expensive rework.",
+                    },
+                    {
+                      text: "Style-focused review",
+                      tip: "Without acceptance criteria, review gets stuck on naming and formatting instead of 'did we build the right thing?'",
+                    },
                   ],
                 },
                 right: {
                   title: "✓ The solution",
                   items: [
-                    "Explicit intent",
-                    "Acceptance criteria",
-                    "Less rework",
-                    '"Why→what" artifact',
+                    {
+                      text: "Explicit intent",
+                      tip: "The spec states what to achieve and why — before a line of code. This is the basis for independent verification.",
+                    },
+                    {
+                      text: "Acceptance criteria",
+                      tip: "A clear list of 'how we'll know it works' — enables tests, focused review, and prevents end-of-sprint arguments.",
+                    },
+                    {
+                      text: "Less rework",
+                      tip: "Ambiguity caught at the spec stage costs minutes to fix; the same ambiguity in implementation costs days.",
+                    },
+                    {
+                      text: '"Why→what" artifact',
+                      tip: "Even when product already provides PRDs/specs, SDD ties the 'why→what' to implementation near the code (tasks, tests, PRs) — keeping context traceable and living with the code, while AI stays focused on the agreed scope.",
+                    },
                   ],
                 },
               },
@@ -1392,10 +1470,22 @@
               label: "Spec-Driven · AI",
               title: "Where AI fits",
               bullets: [
-                "Draft proposals and explore edge cases",
-                "Map specs to implementation tasks",
-                "Scaffolds and tests from approved specs",
-                "Update docs from completed specs",
+                {
+                  text: "Draft proposals and explore edge cases",
+                  tip: "AI suggests solution variants and surfaces edge cases before coding — humans choose and approve.",
+                },
+                {
+                  text: "Map specs to implementation tasks",
+                  tip: "Breaks an approved spec into small, trackable steps — reduces 'where did we start?' confusion.",
+                },
+                {
+                  text: "Scaffolds and tests from approved specs",
+                  tip: "Only after the spec is aligned — AI generates boilerplate and tests that cover acceptance criteria.",
+                },
+                {
+                  text: "Update docs from completed specs",
+                  tip: "When the spec changes or closes, AI updates docs and release notes — preserving traceability.",
+                },
               ],
             },
             {
@@ -1403,12 +1493,30 @@
               title: "OpenSpec — execution framework",
               key: "Not just docs — a <strong>repeatable loop</strong>: propose → align → implement → verify",
               flow: [
-                "Request",
-                "Proposal",
-                "Spec",
-                "Build",
-                "Tests",
-                "Traceability",
+                {
+                  text: "Request",
+                  tip: "The starting point in plain language — what the user or business actually wants.",
+                },
+                {
+                  text: "Proposal",
+                  tip: "A change proposal in OpenSpec format — describes what, why, and risks before committing to implementation.",
+                },
+                {
+                  text: "Spec",
+                  tip: "Explicit requirements and acceptance criteria — the source of truth for anyone implementing, testing, or approving.",
+                },
+                {
+                  text: "Build",
+                  tip: "Implement a vertical slice against the spec — AI assists, but scope decisions stay human.",
+                },
+                {
+                  text: "Tests",
+                  tip: "Verify against acceptance criteria, not 'looks reasonable to me' — CI and tests as a gate.",
+                },
+                {
+                  text: "Traceability",
+                  tip: "A clear chain: request → spec → code → verification — track what met the conditions.",
+                },
               ],
             },
             {
@@ -1496,7 +1604,7 @@
           inner += `<div class="flow">${s.flow
             .map(
               (f, idx) => `
-          ${idx ? `<span class="flow-arrow">${lang === "he" ? "←" : "→"}</span>` : ""}<span class="flow-step">${f}</span>
+          ${idx ? `<span class="flow-arrow">${lang === "he" ? "←" : "→"}</span>` : ""}${renderFlowStep(f)}
         `,
             )
             .join("")}</div>`;
@@ -1514,13 +1622,7 @@
 
         if (s.bullets) {
           inner += `<ul class="bullets">${s.bullets
-            .map((b) => {
-              if (typeof b === "object") {
-                const tip = b.tip ? ` data-tip="${escapeAttr(b.tip)}"` : "";
-                return `<li class="${b.tip ? "has-tip" : ""}"${tip}>${b.text}</li>`;
-              }
-              return `<li>${b}</li>`;
-            })
+            .map((b) => renderListItem(b))
             .join("")}</ul>`;
         }
 
@@ -1552,8 +1654,8 @@
 
         if (s.split) {
           inner += `<div class="split">
-          <div class="panel"><h3>${s.split.left.title}</h3><ul class="bullets">${s.split.left.items.map((x) => `<li>${x}</li>`).join("")}</ul></div>
-          <div class="panel"><h3>${s.split.right.title}</h3><ul class="bullets">${s.split.right.items.map((x) => `<li>${x}</li>`).join("")}</ul></div>
+          <div class="panel"><h3>${s.split.left.title}</h3><ul class="bullets">${s.split.left.items.map((x) => renderListItem(x)).join("")}</ul></div>
+          <div class="panel"><h3>${s.split.right.title}</h3><ul class="bullets">${s.split.right.items.map((x) => renderListItem(x)).join("")}</ul></div>
         </div>`;
         }
 
@@ -1562,6 +1664,22 @@
         }
 
         return `<section class="slide" data-index="${i}"><div class="slide-inner">${inner}</div></section>`;
+      }
+
+      function tipAttrs(item) {
+        const text = typeof item === "object" ? item.text : item;
+        const tip = typeof item === "object" && item.tip ? item.tip : "";
+        return { text, tipAttr: tip ? ` data-tip="${escapeAttr(tip)}"` : "", hasTip: !!tip };
+      }
+
+      function renderListItem(item) {
+        const { text, tipAttr, hasTip } = tipAttrs(item);
+        return `<li class="${hasTip ? "has-tip" : ""}"${tipAttr}>${text}</li>`;
+      }
+
+      function renderFlowStep(item) {
+        const { text, tipAttr } = tipAttrs(item);
+        return `<span class="flow-step"${tipAttr}>${text}</span>`;
       }
 
       function escapeAttr(str) {
