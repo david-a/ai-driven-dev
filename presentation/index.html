@@ -516,32 +516,32 @@
         color: var(--text-muted);
         line-height: 1.4;
       }
-    .layer-info .layer-detail {
-      display: block;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      opacity: 0.85;
-      margin-top: 0.25rem;
-      line-height: 1.4;
-    }
+      .layer-info .layer-detail {
+        display: block;
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        opacity: 0.85;
+        margin-top: 0.25rem;
+        line-height: 1.4;
+      }
 
-    .layer-extras {
-      list-style: none;
-      margin-top: 0.45rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-    }
+      .layer-extras {
+        list-style: none;
+        margin-top: 0.45rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+      }
 
-    .layer-extras li {
-      font-size: 0.68rem;
-      font-weight: 500;
-      padding: 0.2rem 0.5rem;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--highlight);
-      border: 1px solid rgba(99, 102, 241, 0.25);
-    }
+      .layer-extras li {
+        font-size: 0.68rem;
+        font-weight: 500;
+        padding: 0.2rem 0.5rem;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--highlight);
+        border: 1px solid rgba(99, 102, 241, 0.25);
+      }
 
       .bullets li.has-tip {
         cursor: help;
@@ -768,6 +768,174 @@
         transform: translateX(50%) scale(1);
       }
 
+      /* OpenSpec loop title — terminal tooltips */
+      h2:has(.opsx-loop-title) {
+        overflow: visible;
+      }
+
+      .opsx-loop-title {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.35rem 0.5rem;
+        line-height: 1.35;
+        overflow: visible;
+      }
+
+      .opsx-loop-prefix {
+        font-weight: 700;
+      }
+
+      .opsx-loop-arrow {
+        color: var(--accent);
+        opacity: 0.75;
+        font-size: 0.9em;
+        user-select: none;
+      }
+
+      .opsx-cmd {
+        position: relative;
+        display: inline-flex;
+        cursor: help;
+        border-bottom: 1px dotted rgba(99, 102, 241, 0.55);
+      }
+
+      .opsx-cmd > code {
+        cursor: help;
+      }
+
+      .opsx-cmd .terminal-popup {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        right: auto;
+        bottom: auto;
+        margin-top: 12px;
+        transform: translateX(-50%) translateY(4px) scale(0.98);
+        transform-origin: top center;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        z-index: 200;
+        transition:
+          opacity 0.2s,
+          transform 0.2s,
+          visibility 0.2s;
+        width: max-content;
+        max-width: min(520px, 88vw);
+      }
+
+      .opsx-cmd:hover .terminal-popup,
+      .opsx-cmd:focus-visible .terminal-popup,
+      .opsx-cmd.tip-open .terminal-popup {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0) scale(1);
+        pointer-events: auto;
+      }
+
+      .slide:has(.opsx-cmd.tip-open) .slide-inner,
+      .slide:has(.opsx-cmd:hover) .slide-inner {
+        overflow: visible;
+      }
+
+      .slide:has(.opsx-cmd.tip-open),
+      .slide:has(.opsx-cmd:hover) {
+        overflow: visible;
+        z-index: 5;
+      }
+
+      .slide.active:has(.opsx-cmd.tip-open),
+      .slide.active:has(.opsx-cmd:hover) {
+        z-index: 10;
+      }
+
+      .terminal-shell {
+        background: #0c1018;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 10px;
+        box-shadow:
+          0 20px 50px rgba(0, 0, 0, 0.55),
+          0 0 0 1px rgba(99, 102, 241, 0.15);
+        overflow: hidden;
+        text-align: start;
+      }
+
+      .terminal-chrome {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.45rem 0.65rem;
+        background: linear-gradient(180deg, #161d2e 0%, #121826 100%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        font-family: var(--mono);
+        font-size: 0.62rem;
+        color: var(--text-muted);
+        letter-spacing: 0.04em;
+      }
+
+      .terminal-dots {
+        display: flex;
+        gap: 0.3rem;
+      }
+
+      .terminal-dots span {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: #3b4256;
+      }
+
+      .terminal-dots span:nth-child(1) {
+        background: #f87171;
+      }
+      .terminal-dots span:nth-child(2) {
+        background: #fbbf24;
+      }
+      .terminal-dots span:nth-child(3) {
+        background: #34d399;
+      }
+
+      .terminal-body {
+        margin: 0;
+        padding: 0.75rem 0.85rem 0.85rem;
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        line-height: 1.55;
+        color: #c8d0e0;
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .terminal-body .t-line {
+        display: block;
+      }
+
+      .terminal-body .t-prompt-you {
+        color: #7dd3fc;
+        font-weight: 600;
+      }
+
+      .terminal-body .t-prompt-ai {
+        color: #a5b4fc;
+        font-weight: 600;
+      }
+
+      .terminal-body .t-check {
+        color: var(--success);
+      }
+
+      .terminal-body .t-indent {
+        display: block;
+        padding-inline-start: 2.35rem;
+      }
+
+      .terminal-body .t-highlight {
+        color: #e8ecf4;
+      }
+
       code {
         font-family: var(--mono);
         font-size: 0.85em;
@@ -808,6 +976,38 @@
     </footer>
 
     <script>
+      const opsxDemos = {
+        propose: {
+          you: "/opsx:propose add-dark-mode",
+          ai: [
+            "Created openspec/changes/add-dark-mode/",
+            { check: "proposal.md — why we're doing this, what's changing" },
+            { check: "specs/       — requirements and scenarios" },
+            { check: "design.md    — technical approach" },
+            { check: "tasks.md     — implementation checklist" },
+            "Ready for implementation!",
+          ],
+        },
+        apply: {
+          you: "/opsx:apply",
+          ai: [
+            "Implementing tasks...",
+            { check: "1.1 Add theme context provider" },
+            { check: "1.2 Create toggle component" },
+            { check: "2.1 Add CSS variables" },
+            { check: "2.2 Wire up localStorage" },
+            "All tasks complete!",
+          ],
+        },
+        archive: {
+          you: "/opsx:archive",
+          ai: [
+            "Archived to openspec/changes/archive/2025-01-23-add-dark-mode/",
+            "Specs updated. Ready for the next feature.",
+          ],
+        },
+      };
+
       const i18n = {
         he: {
           navSlides: "שקפים",
@@ -885,7 +1085,7 @@
                 {
                   icon: "📚",
                   type: "opportunity",
-                  title: "חניכה",
+                  title: "מנטורינג",
                   desc: "הסבר קוד וארכיטקטורה בסיוע AI",
                 },
                 {
@@ -1073,12 +1273,12 @@
                       tip: "בלי Spec מפורש, כל מהנדס (ובין סוכני AI) מפרשים את הבקשה אחרת — והפתרונות לא יתיישרו.",
                     },
                     {
-                      text: "זחילת היקף (scope creep)",
-                      tip: "כשהכוונה לא מוגדרת מראש, \"רק עוד פיצ'ר קטן\" מצטרף באמצע — ומייצר ריוורק יקר.",
+                      text: "זליגת היקף (scope creep)",
+                      tip: 'כשהכוונה לא מוגדרת מראש, "רק עוד פיצ\'ר קטן" מצטרף באמצע — ומייצר ריוורק יקר.',
                     },
                     {
                       text: "review על סגנון",
-                      tip: "בלי קריטריוני קבלה, ה-review מתעכב על naming ו-formatting במקום לבדוק \"האם בנינו את הנכון?\"",
+                      tip: 'בלי קריטריוני קבלה, ה-review מתעכב על naming ו-formatting במקום לבדוק "האם בנינו את הנכון?"',
                     },
                   ],
                 },
@@ -1091,7 +1291,7 @@
                     },
                     {
                       text: "קריטריוני קבלה",
-                      tip: "רשימה ברורה של \"איך נדע שזה עובד\" — מאפשרת בדיקות, review ממוקד, ומונעת ויכוחים בסוף.",
+                      tip: 'רשימה ברורה של "איך נדע שזה עובד" — מאפשרת בדיקות, review ממוקד, ומונעת ויכוחים בסוף.',
                     },
                     {
                       text: "פחות ריוורק",
@@ -1099,7 +1299,7 @@
                     },
                     {
                       text: 'ארטיפקט "למה←מה"',
-                      tip: "גם כשיש PRD/Spec מהפרודקט, SDD מחבר את ה-\"למה→מה\" למימוש ליד הקוד (משימות, בדיקות, PRים) — כך ה-context נשאר traceable וחי עם הקוד, וה-AI נשאר ממוקד בהיקף שסוכם.",
+                      tip: 'גם כשיש PRD/Spec מהפרודקט, SDD מחבר את ה-"למה→מה" למימוש ליד הקוד (משימות, בדיקות, PRים) — כך ה-context נשאר traceable וחי עם הקוד, וה-AI נשאר ממוקד בהיקף שסוכם.',
                     },
                   ],
                 },
@@ -1115,7 +1315,7 @@
                 },
                 {
                   text: "מיפוי Specs למשימות מימוש",
-                  tip: "מפרק Spec מאושר לשלבים קטנים שניתן לבצע ולעקוב — מפחית \"לאן התחלנו?\"",
+                  tip: 'מפרק Spec מאושר לשלבים קטנים שניתן לבצע ולעקוב — מפחית "לאן התחלנו?"',
                 },
                 {
                   text: "שלדים ובדיקות מ-Specs מאושרים",
@@ -1128,34 +1328,65 @@
               ],
             },
             {
-              label: "OpenSpec",
-              title: "OpenSpec — מסגרת ביצוע",
-              key: "לא רק תיעוד — <strong>לופ חוזר</strong>: הצעה ← יישור ← מימוש ← אימות",
+              label: "OpenSpec · Features",
+              title: "OpenSpec — מה ה-Features נותנים בפועל",
+              key: "שלושה ערכים מרכזיים: <strong>יישור כוונה</strong>, <strong>context מתמשך</strong>, ו-<strong>review מהיר לפני קוד</strong>.",
+              cards: [
+                {
+                  icon: "🎯",
+                  type: "neutral",
+                  title: "Review intent, not just code",
+                  desc: "Spec deltas מציגים שינוי בדרישות ובתרחישים, כך שה-review מתמקד בכוונה העסקית ולא רק בדיפים של קוד.",
+                },
+                {
+                  icon: "🧠",
+                  type: "neutral",
+                  title: "Context that persists",
+                  desc: "ה-specs חיים בתוך הריפו לפי יכולות, נשארים בין סשנים, ומשמשים מקור אמת למפתחים ולסוכנים לאורך זמן.",
+                },
+                {
+                  icon: "⚡",
+                  type: "neutral",
+                  title: "Something to review in seconds",
+                  desc: "מ-Request קצר מתקבלים proposal/design/tasks/spec deltas מוכנים לביקורת מהירה לפני תחילת מימוש.",
+                },
+              ],
+              bullets: [
+                "planning layer שחי עם הקוד — לא נעלם בסוף צ'אט",
+                "שרשרת traceability ברורה: דרישה ← שינוי ב-Spec ← מימוש",
+                "תמיכה native בכלי AI נפוצים כמו Cursor, Codex ו-Copilot",
+              ],
+            },
+            {
+              label: "OpenSpec · Process",
+              opsxLoop: {
+                prefix: "הלופ:",
+                steps: [
+                  { cmd: "/opsx:propose", demo: "propose" },
+                  { cmd: "/opsx:apply", demo: "apply" },
+                  { cmd: "/opsx:archive", demo: "archive" },
+                ],
+              },
+              key: "כך נוצרת לולאת שיפור רציפה: מגדירים שינוי, מממשים מול checklist, ומחזירים ידע מאושר חזרה ל-Specs.",
               flow: [
                 {
-                  text: "בקשה",
-                  tip: "נקודת ההתחלה בשפה חופשית — מה המשתמש או העסק באמת רוצים.",
+                  text: "propose",
+                  tip: "יוצר שינוי חדש תחת openspec/changes עם proposal.md, design.md, tasks.md ו-spec deltas — לפני קוד.",
                 },
                 {
-                  text: "Proposal",
-                  tip: "הצעת שינוי בפורמט OpenSpec — מתארת מה, למה, והסכנות לפני שמתחייבים למימוש.",
+                  text: "apply",
+                  tip: "מממש את המשימות בפועל לפי checklist (למשל 1.1, 1.2...) במקום קפיצות לא מבוקרות.",
                 },
                 {
-                  text: "Spec",
-                  tip: "דרישות וקריטריוני קבלה מפורשים — מקור האמת לכל מי שמממש, בודק, או מאשר.",
+                  text: "archive",
+                  tip: "סוגר את השינוי לתיקיית archive, מעדכן specs, ומשאיר baseline נקי לפיצ'ר הבא.",
                 },
-                {
-                  text: "מימוש",
-                  tip: "מימוש vertical slice מול ה-Spec — AI מסייע, אבל ההחלטות על היקף נשארות אנושיות.",
-                },
-                {
-                  text: "בדיקות",
-                  tip: "אימות מול קריטריוני הקבלה, לא מול \"נראה לי שזה בסדר\" — CI ובדיקות כשער.",
-                },
-                {
-                  text: "Traceability",
-                  tip: "שרשרת ברורה: בקשה → Spec → קוד → אימות — אפשר לעקוב ולראות מה עמד בתנאים.",
-                },
+              ],
+              bullets: [
+                "<code>propose</code> = החלטה על למה/מה לפני הכתיבה",
+                "<code>apply</code> = ביצוע מדיד לפי משימות",
+                "<code>archive</code> = שימור ידע והיסטוריה אמינה",
+                "התוצאה: כל פיצ'ר משפר גם קוד וגם context לסבב הבא",
               ],
             },
             {
@@ -1489,34 +1720,65 @@
               ],
             },
             {
-              label: "OpenSpec",
-              title: "OpenSpec — execution framework",
-              key: "Not just docs — a <strong>repeatable loop</strong>: propose → align → implement → verify",
+              label: "OpenSpec · Features",
+              title: "OpenSpec — what the features deliver",
+              key: "Three practical benefits: <strong>intent-first review</strong>, <strong>persistent context</strong>, and <strong>fast review packages</strong> before coding.",
+              cards: [
+                {
+                  icon: "🎯",
+                  type: "neutral",
+                  title: "Review intent, not just code",
+                  desc: "Spec deltas show requirement and scenario changes, so review focuses on product intent rather than only code diffs.",
+                },
+                {
+                  icon: "🧠",
+                  type: "neutral",
+                  title: "Context that persists",
+                  desc: "Specs live in-repo by capability, persist across sessions, and stay as a shared source of truth for humans and agents.",
+                },
+                {
+                  icon: "⚡",
+                  type: "neutral",
+                  title: "Something to review in seconds",
+                  desc: "A short request produces proposal/design/tasks/spec deltas that are ready for quick review before implementation starts.",
+                },
+              ],
+              bullets: [
+                "A planning layer that survives beyond a single chat session",
+                "Clear traceability: requirement → spec delta → implementation",
+                "Native support across AI tools like Cursor, Codex, and Copilot",
+              ],
+            },
+            {
+              label: "OpenSpec · Process",
+              opsxLoop: {
+                prefix: "The loop:",
+                steps: [
+                  { cmd: "/opsx:propose", demo: "propose" },
+                  { cmd: "/opsx:apply", demo: "apply" },
+                  { cmd: "/opsx:archive", demo: "archive" },
+                ],
+              },
+              key: "This creates a continuous loop: define change, implement against a checklist, then feed approved knowledge back into the specs.",
               flow: [
                 {
-                  text: "Request",
-                  tip: "The starting point in plain language — what the user or business actually wants.",
+                  text: "propose",
+                  tip: "Creates a change in openspec/changes with proposal.md, design.md, tasks.md, and spec deltas before coding.",
                 },
                 {
-                  text: "Proposal",
-                  tip: "A change proposal in OpenSpec format — describes what, why, and risks before committing to implementation.",
+                  text: "apply",
+                  tip: "Implements tasks step-by-step from the checklist (for example 1.1, 1.2...) instead of jumping between ideas.",
                 },
                 {
-                  text: "Spec",
-                  tip: "Explicit requirements and acceptance criteria — the source of truth for anyone implementing, testing, or approving.",
+                  text: "archive",
+                  tip: "Moves the completed change to archive, updates specs, and leaves a clean baseline for the next feature.",
                 },
-                {
-                  text: "Build",
-                  tip: "Implement a vertical slice against the spec — AI assists, but scope decisions stay human.",
-                },
-                {
-                  text: "Tests",
-                  tip: "Verify against acceptance criteria, not 'looks reasonable to me' — CI and tests as a gate.",
-                },
-                {
-                  text: "Traceability",
-                  tip: "A clear chain: request → spec → code → verification — track what met the conditions.",
-                },
+              ],
+              bullets: [
+                "<code>propose</code> = decide why/what before coding",
+                "<code>apply</code> = measurable execution through tasks",
+                "<code>archive</code> = preserve knowledge and reliable history",
+                "Net effect: each feature improves both code and team context for the next loop",
               ],
             },
             {
@@ -1553,10 +1815,7 @@
         const slides = i18n[lang].slides;
         deck.innerHTML = slides.map((s, i) => renderSlide(s, i)).join("");
         document.getElementById("total").textContent = slides.length;
-        currentSlide = Math.min(
-          Math.max(0, currentSlide),
-          slides.length - 1,
-        );
+        currentSlide = Math.min(Math.max(0, currentSlide), slides.length - 1);
         updateSlide();
       }
 
@@ -1573,7 +1832,7 @@
           return `<section class="slide title-slide" data-index="${i}"><div class="slide-inner">${inner}</div></section>`;
         }
 
-        inner += `<div class="slide-label">${s.label}</div><h2>${s.title}</h2>`;
+        inner += `<div class="slide-label">${s.label}</div><h2>${s.opsxLoop ? renderOpsxLoopTitle(s.opsxLoop) : s.title}</h2>`;
         if (s.subtitle) inner += `<p class="subtitle">${s.subtitle}</p>`;
         if (s.key)
           inner += `<div class="key-message${s.keyDanger ? " danger" : ""}">${s.key}</div>`;
@@ -1669,7 +1928,11 @@
       function tipAttrs(item) {
         const text = typeof item === "object" ? item.text : item;
         const tip = typeof item === "object" && item.tip ? item.tip : "";
-        return { text, tipAttr: tip ? ` data-tip="${escapeAttr(tip)}"` : "", hasTip: !!tip };
+        return {
+          text,
+          tipAttr: tip ? ` data-tip="${escapeAttr(tip)}"` : "",
+          hasTip: !!tip,
+        };
       }
 
       function renderListItem(item) {
@@ -1684,6 +1947,61 @@
 
       function escapeAttr(str) {
         return String(str).replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+      }
+
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+
+      function renderTerminalDemo(demoKey) {
+        const demo = opsxDemos[demoKey];
+        if (!demo) return "";
+
+        const lines = [
+          `<span class="t-line"><span class="t-prompt-you">You:</span> <span class="t-highlight">${escapeHtml(demo.you)}</span></span>`,
+        ];
+
+        const ai = demo.ai;
+        const first = typeof ai[0] === "string" ? ai[0] : "";
+        lines.push(
+          `<span class="t-line"><span class="t-prompt-ai">AI:</span>  ${escapeHtml(first)}</span>`,
+        );
+
+        for (let i = 1; i < ai.length; i++) {
+          const item = ai[i];
+          if (typeof item === "string") {
+            lines.push(
+              `<span class="t-line t-indent">${escapeHtml(item)}</span>`,
+            );
+          } else {
+            lines.push(
+              `<span class="t-line t-indent"><span class="t-check">✓</span> ${escapeHtml(item.check)}</span>`,
+            );
+          }
+        }
+
+        return `<div class="terminal-shell">
+          <div class="terminal-chrome">
+            <span class="terminal-dots"><span></span><span></span><span></span></span>
+            <span>opsx</span>
+          </div>
+          <div class="terminal-body">${lines.join("")}</div>
+        </div>`;
+      }
+
+      function renderOpsxLoopTitle(loop) {
+        const arrow = lang === "he" ? "←" : "→";
+        const parts = loop.steps.map((step, idx) => {
+          const cmd = `<span class="opsx-cmd" tabindex="0" aria-label="${escapeAttr(step.cmd)}">
+            <code>${escapeHtml(step.cmd)}</code>
+            <span class="terminal-popup" role="tooltip">${renderTerminalDemo(step.demo)}</span>
+          </span>`;
+          return `${idx ? `<span class="opsx-loop-arrow">${arrow}</span>` : ""}${cmd}`;
+        });
+        return `<span class="opsx-loop-title"><span class="opsx-loop-prefix">${loop.prefix}</span> ${parts.join(" ")}</span>`;
       }
 
       function applyI18nChrome() {
@@ -1739,21 +2057,26 @@
       }
 
       function bindTipTriggers() {
+        const toggleTip = (el, e) => {
+          e.stopPropagation();
+          const open = el.classList.contains("tip-open");
+          document
+            .querySelectorAll("[data-tip].tip-open, .opsx-cmd.tip-open")
+            .forEach((x) => x.classList.remove("tip-open"));
+          if (!open) el.classList.add("tip-open");
+        };
+
         document.querySelectorAll("[data-tip]").forEach((el) => {
-          el.onclick = (e) => {
-            e.stopPropagation();
-            const open = el.classList.contains("tip-open");
-            document
-              .querySelectorAll("[data-tip].tip-open")
-              .forEach((x) => x.classList.remove("tip-open"));
-            if (!open) el.classList.add("tip-open");
-          };
+          el.onclick = (e) => toggleTip(el, e);
+        });
+        document.querySelectorAll(".opsx-cmd").forEach((el) => {
+          el.onclick = (e) => toggleTip(el, e);
         });
       }
 
       document.addEventListener("click", () => {
         document
-          .querySelectorAll("[data-tip].tip-open")
+          .querySelectorAll("[data-tip].tip-open, .opsx-cmd.tip-open")
           .forEach((x) => x.classList.remove("tip-open"));
       });
 
@@ -1793,10 +2116,7 @@
       window.addEventListener("hashchange", () => {
         const idx = getSlideFromUrl();
         if (idx === null || idx === currentSlide) return;
-        currentSlide = Math.min(
-          Math.max(0, idx),
-          i18n[lang].slides.length - 1,
-        );
+        currentSlide = Math.min(Math.max(0, idx), i18n[lang].slides.length - 1);
         updateSlide();
       });
 
