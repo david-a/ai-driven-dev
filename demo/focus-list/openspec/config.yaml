@@ -1,0 +1,25 @@
+schema: spec-driven
+
+context: |
+  Demo app for an OpenSpec presentation. Keep changes small and readable on a projector.
+
+  App root: demo/focus-list/ (this directory)
+  Stack: vanilla HTML, CSS, JavaScript. No framework, no build step, no npm dependencies.
+  Run locally: open index.html or `python3 -m http.server` from this directory.
+
+  Design: light theme, high contrast, large click targets, minimal UI.
+  One accent color for primary actions. System font stack.
+
+rules:
+  proposal:
+    - State problem, scope, and non-goals in plain language
+    - Keep MVP scope; defer nice-to-haves to a follow-up change
+  specs:
+    - Use Given/When/Then scenarios
+    - Cap at 3–5 requirements per change for demo clarity
+  design:
+    - Prefer simple DOM patterns over abstractions
+    - No new dependencies
+  tasks:
+    - Number tasks as 1.1, 1.2, 2.1 with checkboxes
+    - Each task should be completable in one apply pass

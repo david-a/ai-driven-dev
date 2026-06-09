@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus List</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <h1>Focus List</h1>
+      </header>
+
+      <form class="task-form" id="task-form" autocomplete="off">
+        <label class="sr-only" for="task-input">New task</label>
+        <input
+          id="task-input"
+          class="task-input"
+          type="text"
+          placeholder="What needs your focus?"
+          maxlength="200"
+        />
+        <button class="btn btn-primary" type="submit">Add</button>
+      </form>
+
+      <div class="filter-tabs" role="tablist" aria-label="Filter tasks">
+        <button
+          class="filter-tab is-active"
+          type="button"
+          role="tab"
+          id="filter-all"
+          data-filter="all"
+          aria-selected="true"
+          aria-controls="task-list"
+        >
+          All
+        </button>
+        <button
+          class="filter-tab"
+          type="button"
+          role="tab"
+          id="filter-active"
+          data-filter="active"
+          aria-selected="false"
+          aria-controls="task-list"
+        >
+          Active
+        </button>
+        <button
+          class="filter-tab"
+          type="button"
+          role="tab"
+          id="filter-done"
+          data-filter="done"
+          aria-selected="false"
+          aria-controls="task-list"
+        >
+          Done
+        </button>
+      </div>
+
+      <p class="empty-state" id="empty-state" hidden>
+        No tasks yet. Add one above to get started.
+      </p>
+
+      <ul class="task-list" id="task-list" aria-live="polite"></ul>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
